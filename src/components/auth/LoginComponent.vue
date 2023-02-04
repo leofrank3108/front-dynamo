@@ -69,7 +69,7 @@ import { mapActions } from 'vuex'
                     //     icon: 'success',
                     //     title: 'acaba de iniciar sesion'
                     // })
-                    // await this.getDoctors()
+                    await this.getDoctors()
 
                     this.$router.push({name: 'doctors'})
                 }

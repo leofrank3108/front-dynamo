@@ -9,15 +9,6 @@ export const getDoctors = async ({ commit }) => {
     }
 
     const doctors = data
-    
-    // const panels = await mapData(data, cards)
-
-    // for (let id of Object.keys( data )) {
-    //     panels.push({
-    //         id,
-    //         ...data[id]
-    //     })
-    // }
 
     commit('setDataDoctors', doctors)
 
@@ -36,13 +27,13 @@ const mapData = (panels, cards) => {
     return panels;
 }
 
-export const createCard = async ({ commit }, card) => {
-    const {data} = await axios.post('api/cards', card)
+export const createDoctor = async ({ commit }, form) => {
+    const {data} = await axios.post('http://127.0.0.1:8000/api/doctor', form)
     return data
 }
 
-export const deleteCard = async ({ commit }, id) => {
-    const resp = await axios.delete(`api/cards/${id}`)
+export const deleteDoctor = async ({ commit }, id) => {
+    const resp = await axios.delete(`http://127.0.0.1:8000/api/doctor/${id}`)
     console.log(id, resp)
     // // commit('setUser', data)
     // return resp
@@ -56,6 +47,7 @@ export const updateCard = async ({ commit }, form) => {
     return data
 }
 
-export const setCard = async ({commit}, card) => {
-    commit('setCard', card)
+export const setShowModal = async ({commit}, status) => {
+    console.log(status)
+    commit('setShowModal', status)
 }

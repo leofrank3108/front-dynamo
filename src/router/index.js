@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Index from '../views/Index.vue'
+// import Index from '../views/Index.vue'
 import doctorsRouter from '@/modules/doctors/router'
+import authRouter from '@/modules/auth/router'
 
 const routes = [
   {
     path: '/',
-    name: 'Index',
-    component: Index
+    ...authRouter
   },
   {
     path: '/home',
