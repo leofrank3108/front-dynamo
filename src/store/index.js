@@ -1,8 +1,7 @@
 import { createStore } from 'vuex'
 
-import AuthStore from './modules/auth'
 import DoctorsStore from '@/modules/doctors/store'
-import AuthyStore from '@/modules/auth/store'
+import AuthStore from '@/modules/auth/store'
 
 
 export default createStore({
@@ -14,7 +13,6 @@ export default createStore({
   },
   modules: {
     auth: AuthStore,
-    authy: AuthyStore,
     doctors: DoctorsStore
   }
 })

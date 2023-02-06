@@ -1,7 +1,8 @@
 import axios from 'axios'
+const apiUrl = process.env.API_URL
 
 export const getDoctors = async ({ commit }) => {
-    const { data } = await axios.get('http://127.0.0.1:8000/api/doctor')
+    const { data } = await axios.get(`${apiUrl}/doctor`)
 
     if (!data) {
         commit('setDataDoctors', [])
@@ -28,18 +29,18 @@ const mapData = (panels, cards) => {
 }
 
 export const createDoctor = async ({ commit }, form) => {
-    const {data} = await axios.post('http://127.0.0.1:8000/api/doctor', form)
+    const {data} = await axios.post(`${apiUrl}/doctor`, form)
     return data
 }
 
 export const deleteDoctor = async ({ commit }, id) => {
-    const resp = await axios.delete(`http://127.0.0.1:8000/api/doctor/${id}`)
+    const resp = await axios.delete(`${apiUrl}/doctor/${id}`)
 }
 
 export const updateDoctor = async ({ commit }, form) => {
     const id = form.id
     delete form.id
-    const { data } = await axios.put(`http://127.0.0.1:8000/api/doctor/${id}`, form)
+    const { data } = await axios.put(`${apiUrl}/doctor/${id}`, form)
     return data
 }
 
@@ -48,7 +49,7 @@ export const setShowModal = async ({commit}, status) => {
 }
 
 export const getClinics = async ({ commit }) => {
-    const { data } = await axios.get('http://127.0.0.1:8000/api/clinic')
+    const { data } = await axios.get(`${apiUrl}/clinic`)
 
     if (!data) {
         commit('setDataClinics', [])

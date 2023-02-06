@@ -1,21 +1,21 @@
 import axios from 'axios'
+const apiUrl = process.env.API_URL
 
 export const createUser = async ({ commit }, data) => {
-    const {statusText} = await axios.post('http://127.0.0.1:8000/api/register', data)
+    const {statusText} = await axios.post(`${apiUrl}/register`, data)
     return statusText
 }
 
 export const login = async ({ commit }, form) => {
-    const { data } = await axios.post('http://127.0.0.1:8000/api/login', form)
+    const { data } = await axios.post(`${apiUrl}/login`, form)
     commit('setUser', data)
     return data
 }
 
 export const logout = async ({ commit }) => {
-    const response = await axios.post('http://127.0.0.1:8000/api/logout')
+    const response = await axios.post(`${apiUrl}/logout`)
     console.log(response)
     commit('setUser', [])
-    // return data
 }
 
 export const showRegister = async ({ commit }, data) => {
