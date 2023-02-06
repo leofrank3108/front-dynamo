@@ -7,7 +7,8 @@
             mode="horizontal"
             :style="{ lineHeight: '64px' }"
         >
-            <a-menu-item key="1" @click="logout">Cerrar Sesion</a-menu-item>
+            <a-menu-item key="1">Iniciar Sesion</a-menu-item>
+            <a-menu-item key="2">Registrarse</a-menu-item>
         </a-menu>
         </a-layout-header>
         <a-layout-content style="padding: 0 50px">
@@ -20,26 +21,13 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
-export default {
-    data() {
-        return {
-            selectedKeys: []
-        }
-    },
-    async created () {
-        await this.getDoctors()
-    },
-    methods: {
-        ...mapActions('doctors', ['getDoctors']),
-        ...mapActions('auth', ['logout']),
-        logout() {
-            this.logout()
-            this.$router.push({name: 'login'})
-        }
-    },
-}
+    export default {
+        data() {
+            return {
+                selectedKeys: []
+            }
+        },
+    }
 </script>
 
 <style lang="scss" scoped>

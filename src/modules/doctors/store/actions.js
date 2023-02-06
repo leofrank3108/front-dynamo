@@ -34,20 +34,29 @@ export const createDoctor = async ({ commit }, form) => {
 
 export const deleteDoctor = async ({ commit }, id) => {
     const resp = await axios.delete(`http://127.0.0.1:8000/api/doctor/${id}`)
-    console.log(id, resp)
-    // // commit('setUser', data)
-    // return resp
 }
 
-export const updateCard = async ({ commit }, form) => {
+export const updateDoctor = async ({ commit }, form) => {
     const id = form.id
     delete form.id
-    const { data } = await axios.put(`api/cards/${id}`, form)
-    // commit('setUser', data)
+    const { data } = await axios.put(`http://127.0.0.1:8000/api/doctor/${id}`, form)
     return data
 }
 
 export const setShowModal = async ({commit}, status) => {
-    console.log(status)
     commit('setShowModal', status)
+}
+
+export const getClinics = async ({ commit }) => {
+    const { data } = await axios.get('http://127.0.0.1:8000/api/clinic')
+
+    if (!data) {
+        commit('setDataClinics', [])
+        return
+    }
+
+    const clinics = data.data
+
+    commit('setDataClinics', clinics)
+
 }

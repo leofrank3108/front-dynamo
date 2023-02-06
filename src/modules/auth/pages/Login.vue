@@ -30,7 +30,7 @@
   </a-form>
 </template>
 <script>
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -50,7 +50,7 @@ export default defineComponent({
         await store.dispatch('doctors/getDoctors')
 
         router.push({name: 'doctors'})
-    }
+      }
     };
     const onFinishFailed = errorInfo => {
       console.log('Failed:', errorInfo)

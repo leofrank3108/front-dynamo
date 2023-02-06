@@ -11,6 +11,13 @@ export const login = async ({ commit }, form) => {
     return data
 }
 
+export const logout = async ({ commit }) => {
+    const response = await axios.post('http://127.0.0.1:8000/api/logout')
+    console.log(response)
+    commit('setUser', [])
+    // return data
+}
+
 export const showRegister = async ({ commit }, data) => {
     commit('setShowRegisterForm', data)
     return data
