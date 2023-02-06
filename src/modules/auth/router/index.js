@@ -6,6 +6,11 @@ export default {
             path: '',
             name: 'login',
             component: () => import(/* webpackChunkName: "login" */ '@/modules/auth/pages/Login.vue'),
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: () => import(/* webpackChunkName: "login" */ '@/modules/auth/pages/Register.vue'),
         }
     ]
 }

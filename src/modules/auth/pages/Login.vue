@@ -25,14 +25,15 @@
     </a-form-item>
 
     <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-      <a-button type="primary" html-type="submit">Submit</a-button>
+      <a-button type="primary" html-type="submit">Iniciar Sesion</a-button>
     </a-form-item>
   </a-form>
+  <h4>Si aun no tienes cuenta <a-button type="ghost" @click="toRegister">Registrate</a-button></h4>
 </template>
 <script>
 import { defineComponent, reactive } from 'vue';
 import { useStore } from 'vuex'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   setup() {
@@ -55,10 +56,15 @@ export default defineComponent({
     const onFinishFailed = errorInfo => {
       console.log('Failed:', errorInfo)
     }
+
+    const toRegister = () => {
+      router.push({name: 'register'})
+    }
     return {
       form,
       onSubmit,
       onFinishFailed,
+      toRegister,
       store,
     };
   },
